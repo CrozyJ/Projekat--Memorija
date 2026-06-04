@@ -1,2 +1,2 @@
-# Projekat--igrica-neodlucena-
+# Projekat--Memorija
 Projekat iz OOP
