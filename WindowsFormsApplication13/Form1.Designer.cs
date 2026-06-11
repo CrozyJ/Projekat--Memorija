@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication13
+namespace WindowsFormsApplication13
 {
     partial class Form1
     {
@@ -34,6 +34,8 @@
             this.btnRestart = new System.Windows.Forms.Button();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.button1 = new System.Windows.Forms.Button();
+            this.NChooser = new System.Windows.Forms.ComboBox();
+            this.PictureChoose = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblTime
@@ -62,6 +64,7 @@
             this.btnRestart.TabIndex = 2;
             this.btnRestart.Text = "Restart Game";
             this.btnRestart.UseVisualStyleBackColor = true;
+            this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click_1);
             // 
             // gameTimer
             // 
@@ -77,11 +80,43 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // NChooser
+            // 
+            this.NChooser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.NChooser.FormattingEnabled = true;
+            this.NChooser.Items.AddRange(new object[] {
+            "8",
+            "16",
+            "32"});
+            this.NChooser.Location = new System.Drawing.Point(363, 18);
+            this.NChooser.Name = "NChooser";
+            this.NChooser.Size = new System.Drawing.Size(97, 21);
+            this.NChooser.TabIndex = 4;
+            this.NChooser.SelectedIndexChanged += new System.EventHandler(this.NChooser_SelectedIndexChanged);
+            // 
+            // PictureChoose
+            // 
+            this.PictureChoose.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PictureChoose.FormattingEnabled = true;
+            this.PictureChoose.Items.AddRange(new object[] {
+            "Regular",
+            "3.SI2",
+            "Fruit ",
+            "Animals ",
+            "Elites "});
+            this.PictureChoose.Location = new System.Drawing.Point(478, 16);
+            this.PictureChoose.Name = "PictureChoose";
+            this.PictureChoose.Size = new System.Drawing.Size(103, 21);
+            this.PictureChoose.TabIndex = 5;
+            this.PictureChoose.SelectedIndexChanged += new System.EventHandler(this.PictureChoose_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(548, 521);
+            this.ClientSize = new System.Drawing.Size(604, 521);
+            this.Controls.Add(this.PictureChoose);
+            this.Controls.Add(this.NChooser);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.lblHighScore);
@@ -101,6 +136,8 @@
         private System.Windows.Forms.Button btnRestart;
         private System.Windows.Forms.Timer gameTimer;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox NChooser;
+        private System.Windows.Forms.ComboBox PictureChoose;
 
     }
 }
