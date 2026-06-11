@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -10,7 +10,7 @@ namespace WindowsFormsApplication13
     public partial class Form1 : Form
     {
         // Game Configuration
-        private const string ImageFolderName = "Images";
+        public string ImageFolderName = "Elites";
         private const string HighScoreFile = "highscore.txt";
 
         private List<string> imagePaths = new List<string>();
@@ -25,6 +25,7 @@ namespace WindowsFormsApplication13
         private int totalMatchesFound = 0;
         private int highScore = int.MaxValue;
 
+        private int n = 8;
         // Animation State Lock
         private bool isAnimating = false;
 
@@ -67,13 +68,13 @@ namespace WindowsFormsApplication13
             string exePath = AppDomain.CurrentDomain.BaseDirectory;
             string imagesDir = Path.Combine(exePath, ImageFolderName);
 
-            if (!Directory.Exists(imagesDir) || Directory.GetFiles(imagesDir).Length < 8)
+            if (!Directory.Exists(imagesDir) || Directory.GetFiles(imagesDir).Length < n)
             {
-                MessageBox.Show("Please ensure the '" + ImageFolderName + "' folder exists next to the .exe and contains at least 8 images.", "Missing Assets");
+                MessageBox.Show("Please ensure the '" + ImageFolderName + "' folder exists next to the .exe and contains at least " + n + " images.", "Missing Assets");
                 return;
             }
 
-            List<string> files = Directory.GetFiles(imagesDir).Take(8).ToList();
+            List<string> files = Directory.GetFiles(imagesDir).Take(n).ToList();
             imagePaths = files.Concat(files).ToList();
 
             Random rng = new Random();
@@ -84,7 +85,7 @@ namespace WindowsFormsApplication13
             int startX = 20;
             int startY = 60;
 
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < n*2; i++)
             {
                 int row = i / 4;
                 int col = i % 4;
@@ -175,7 +176,7 @@ namespace WindowsFormsApplication13
                     secondClicked = null;
                     totalMatchesFound++;
 
-                    if (totalMatchesFound == 8)
+                    if (totalMatchesFound == n)
                     {
                         EndGame();
                     }
@@ -259,8 +260,33 @@ namespace WindowsFormsApplication13
             button1.Text = "Resume";
             button1Clicked = true;
         }
+
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NChooser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            n = Convert.ToInt32(NChooser.SelectedItem);
+            InitializeGame();
+        }
+
+        private void btnRestart_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PictureChoose_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ImageFolderName = PictureChoose.SelectedItem.ToString();
+            InitializeGame();
+        }
+
     }
 }
+//NChooser.SelectedIndex = 0;
+            //PictureChoose.SelectedIndex = 4;
 //TODO:   create an option for choosing how many cards the player wants
 //        make the game better aesthetically
 //        make several folders for different types of images
