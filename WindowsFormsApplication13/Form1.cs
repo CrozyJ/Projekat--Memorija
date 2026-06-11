@@ -261,3 +261,7 @@ namespace WindowsFormsApplication13
         }
     }
 }
+//TODO:   create an option for choosing how many cards the player wants
+//        make the game better aesthetically
+//        make several folders for different types of images
+//        make several different animation options
